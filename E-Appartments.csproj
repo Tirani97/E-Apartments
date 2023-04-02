@@ -1,0 +1,934 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A4F60902-DB19-456F-9A62-DA3E42706064}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>E_Appartments</RootNamespace>
+    <AssemblyName>E-Appartments</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.97.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <HintPath>packages\ClosedXML.0.97.0\lib\netstandard2.0\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="ClosedXML.Report, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b5435ca1fa2ab9d6, processorArchitecture=MSIL">
+      <HintPath>packages\ClosedXML.Report.0.2.6\lib\net462\ClosedXML.Report.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.16.0.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>packages\DocumentFormat.OpenXml.2.16.0\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="Irony, Version=1.0.11.0, Culture=neutral, PublicKeyToken=ca48ace7223ead47, processorArchitecture=MSIL">
+      <HintPath>packages\Irony.NetCore.1.0.11\lib\net461\Irony.dll</HintPath>
+    </Reference>
+    <Reference Include="MoreLinq, Version=3.3.2.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>packages\morelinq.3.3.2\lib\net451\MoreLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="SixLabors.Fonts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d998eea7b14cab13, processorArchitecture=MSIL">
+      <HintPath>packages\SixLabors.Fonts.1.0.0-beta19\lib\netstandard2.0\SixLabors.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.Packaging.4.7.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.UnmanagedMemoryStream, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.UnmanagedMemoryStream.4.3.0\lib\net46\System.IO.UnmanagedMemoryStream.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq.Dynamic.Core, Version=1.2.20.0, Culture=neutral, PublicKeyToken=0f07ec44de6ac832, processorArchitecture=MSIL">
+      <HintPath>packages\System.Linq.Dynamic.Core.1.2.20\lib\net46\System.Linq.Dynamic.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.7.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="XLParser, Version=1.5.2.0, Culture=neutral, PublicKeyToken=63397e1e46bb91b4, processorArchitecture=MSIL">
+      <HintPath>packages\XLParser.1.5.2\lib\net461\XLParser.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddOccupant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddOccupant.Designer.cs">
+      <DependentUpon>AddOccupant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C1C1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C1C1.Designer.cs">
+      <DependentUpon>C1C1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C1C2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C1C2.Designer.cs">
+      <DependentUpon>C1C2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C1C3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C1C3.Designer.cs">
+      <DependentUpon>C1C3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C1C4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C1C4.Designer.cs">
+      <DependentUpon>C1C4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C2C1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C2C1.Designer.cs">
+      <DependentUpon>C2C1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C2C2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C2C2.Designer.cs">
+      <DependentUpon>C2C2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C2C3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C2C3.Designer.cs">
+      <DependentUpon>C2C3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C2C4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C2C4.Designer.cs">
+      <DependentUpon>C2C4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C3C1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C3C1.Designer.cs">
+      <DependentUpon>C3C1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C3C2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C3C2.Designer.cs">
+      <DependentUpon>C3C2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C3C3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C3C3.Designer.cs">
+      <DependentUpon>C3C3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C3C4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C3C4.Designer.cs">
+      <DependentUpon>C3C4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C4C1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C4C1.Designer.cs">
+      <DependentUpon>C4C1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C4C2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C4C2.Designer.cs">
+      <DependentUpon>C4C2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C4C3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C4C3.Designer.cs">
+      <DependentUpon>C4C3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="C4C4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C4C4.Designer.cs">
+      <DependentUpon>C4C4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LeaseExtentionRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaseExtentionRequest.Designer.cs">
+      <DependentUpon>LeaseExtentionRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LeaseRequestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaseRequestForm.Designer.cs">
+      <DependentUpon>LeaseRequestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LeaseRequestOthers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaseRequestOthers.Designer.cs">
+      <DependentUpon>LeaseRequestOthers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LeaseUserReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaseUserReport.Designer.cs">
+      <DependentUpon>LeaseUserReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerLeaseRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagerLeaseRequest.Designer.cs">
+      <DependentUpon>ManagerLeaseRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MP.Designer.cs">
+      <DependentUpon>MP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MPC1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MPC1.Designer.cs">
+      <DependentUpon>MPC1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MPC2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MPC2.Designer.cs">
+      <DependentUpon>MPC2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MPC3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MPC3.Designer.cs">
+      <DependentUpon>MPC3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MPC4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MPC4.Designer.cs">
+      <DependentUpon>MPC4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MPLeaseExtentionRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MPLeaseExtentionRequest.Designer.cs">
+      <DependentUpon>MPLeaseExtentionRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegisteredUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisteredUsers.Designer.cs">
+      <DependentUpon>RegisteredUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Signup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Signup.Designer.cs">
+      <DependentUpon>Signup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_E_AppartmentsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet10.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet10.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet11.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet12.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet12.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet13.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet13.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet14.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet14.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet15.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet15.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet16.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet16.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet17.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet17.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet18.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet18.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet19.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet19.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet20.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet20.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet21.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet21.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet22.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet22.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet23.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet23.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet24.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet24.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet25.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet25.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet26.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet26.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet27.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet27.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet28.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet28.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet29.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet29.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet6.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet6.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet7.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet8.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet8.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="_E_AppartmentsDataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_E_AppartmentsDataSet9.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddOccupant.resx">
+      <DependentUpon>AddOccupant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C1C1.resx">
+      <DependentUpon>C1C1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C1C2.resx">
+      <DependentUpon>C1C2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C1C3.resx">
+      <DependentUpon>C1C3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C1C4.resx">
+      <DependentUpon>C1C4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C2C1.resx">
+      <DependentUpon>C2C1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C2C2.resx">
+      <DependentUpon>C2C2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C2C3.resx">
+      <DependentUpon>C2C3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C2C4.resx">
+      <DependentUpon>C2C4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C3C1.resx">
+      <DependentUpon>C3C1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C3C2.resx">
+      <DependentUpon>C3C2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C3C3.resx">
+      <DependentUpon>C3C3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C3C4.resx">
+      <DependentUpon>C3C4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C4C1.resx">
+      <DependentUpon>C4C1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C4C2.resx">
+      <DependentUpon>C4C2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C4C3.resx">
+      <DependentUpon>C4C3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="C4C4.resx">
+      <DependentUpon>C4C4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaseExtentionRequest.resx">
+      <DependentUpon>LeaseExtentionRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaseRequestForm.resx">
+      <DependentUpon>LeaseRequestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaseRequestOthers.resx">
+      <DependentUpon>LeaseRequestOthers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaseUserReport.resx">
+      <DependentUpon>LeaseUserReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagerLeaseRequest.resx">
+      <DependentUpon>ManagerLeaseRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MP.resx">
+      <DependentUpon>MP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MPC1.resx">
+      <DependentUpon>MPC1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MPC2.resx">
+      <DependentUpon>MPC2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MPC3.resx">
+      <DependentUpon>MPC3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MPC4.resx">
+      <DependentUpon>MPC4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MPLeaseExtentionRequest.resx">
+      <DependentUpon>MPLeaseExtentionRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisteredUsers.resx">
+      <DependentUpon>RegisteredUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Signup.resx">
+      <DependentUpon>Signup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="_E_AppartmentsDataSet.xsc">
+      <DependentUpon>_E_AppartmentsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet.xss">
+      <DependentUpon>_E_AppartmentsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet1.xsc">
+      <DependentUpon>_E_AppartmentsDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet1.xss">
+      <DependentUpon>_E_AppartmentsDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet10.xsc">
+      <DependentUpon>_E_AppartmentsDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet10.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet10.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet10.xss">
+      <DependentUpon>_E_AppartmentsDataSet10.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet11.xsc">
+      <DependentUpon>_E_AppartmentsDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet11.xss">
+      <DependentUpon>_E_AppartmentsDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet12.xsc">
+      <DependentUpon>_E_AppartmentsDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet12.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet12.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet12.xss">
+      <DependentUpon>_E_AppartmentsDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet13.xsc">
+      <DependentUpon>_E_AppartmentsDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet13.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet13.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet13.xss">
+      <DependentUpon>_E_AppartmentsDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet14.xsc">
+      <DependentUpon>_E_AppartmentsDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet14.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet14.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet14.xss">
+      <DependentUpon>_E_AppartmentsDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet15.xsc">
+      <DependentUpon>_E_AppartmentsDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet15.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet15.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet15.xss">
+      <DependentUpon>_E_AppartmentsDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet16.xsc">
+      <DependentUpon>_E_AppartmentsDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet16.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet16.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet16.xss">
+      <DependentUpon>_E_AppartmentsDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet17.xsc">
+      <DependentUpon>_E_AppartmentsDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet17.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet17.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet17.xss">
+      <DependentUpon>_E_AppartmentsDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet18.xsc">
+      <DependentUpon>_E_AppartmentsDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet18.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet18.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet18.xss">
+      <DependentUpon>_E_AppartmentsDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet19.xsc">
+      <DependentUpon>_E_AppartmentsDataSet19.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet19.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet19.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet19.xss">
+      <DependentUpon>_E_AppartmentsDataSet19.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet2.xsc">
+      <DependentUpon>_E_AppartmentsDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet2.xss">
+      <DependentUpon>_E_AppartmentsDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet20.xsc">
+      <DependentUpon>_E_AppartmentsDataSet20.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet20.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet20.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet20.xss">
+      <DependentUpon>_E_AppartmentsDataSet20.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet21.xsc">
+      <DependentUpon>_E_AppartmentsDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet21.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet21.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet21.xss">
+      <DependentUpon>_E_AppartmentsDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet22.xsc">
+      <DependentUpon>_E_AppartmentsDataSet22.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet22.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet22.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet22.xss">
+      <DependentUpon>_E_AppartmentsDataSet22.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet23.xsc">
+      <DependentUpon>_E_AppartmentsDataSet23.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet23.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet23.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet23.xss">
+      <DependentUpon>_E_AppartmentsDataSet23.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet24.xsc">
+      <DependentUpon>_E_AppartmentsDataSet24.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet24.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet24.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet24.xss">
+      <DependentUpon>_E_AppartmentsDataSet24.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet25.xsc">
+      <DependentUpon>_E_AppartmentsDataSet25.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet25.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet25.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet25.xss">
+      <DependentUpon>_E_AppartmentsDataSet25.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet26.xsc">
+      <DependentUpon>_E_AppartmentsDataSet26.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet26.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet26.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet26.xss">
+      <DependentUpon>_E_AppartmentsDataSet26.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet27.xsc">
+      <DependentUpon>_E_AppartmentsDataSet27.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet27.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet27.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet27.xss">
+      <DependentUpon>_E_AppartmentsDataSet27.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet28.xsc">
+      <DependentUpon>_E_AppartmentsDataSet28.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet28.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet28.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet28.xss">
+      <DependentUpon>_E_AppartmentsDataSet28.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet29.xsc">
+      <DependentUpon>_E_AppartmentsDataSet29.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet29.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet29.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet29.xss">
+      <DependentUpon>_E_AppartmentsDataSet29.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet3.xsc">
+      <DependentUpon>_E_AppartmentsDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet3.xss">
+      <DependentUpon>_E_AppartmentsDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet4.xsc">
+      <DependentUpon>_E_AppartmentsDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet4.xss">
+      <DependentUpon>_E_AppartmentsDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet5.xsc">
+      <DependentUpon>_E_AppartmentsDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet5.xss">
+      <DependentUpon>_E_AppartmentsDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet6.xsc">
+      <DependentUpon>_E_AppartmentsDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet6.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet6.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet6.xss">
+      <DependentUpon>_E_AppartmentsDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet7.xsc">
+      <DependentUpon>_E_AppartmentsDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet7.xss">
+      <DependentUpon>_E_AppartmentsDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet8.xsc">
+      <DependentUpon>_E_AppartmentsDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet8.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet8.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet8.xss">
+      <DependentUpon>_E_AppartmentsDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet9.xsc">
+      <DependentUpon>_E_AppartmentsDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="_E_AppartmentsDataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_E_AppartmentsDataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_E_AppartmentsDataSet9.xss">
+      <DependentUpon>_E_AppartmentsDataSet9.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
